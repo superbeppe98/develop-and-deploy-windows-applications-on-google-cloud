@@ -85,15 +85,34 @@ There is also a highly available Sequel Server solution which will install multi
 <br>
 
 ## High-Availability SQL Server on Compute Engine
-Let's finish off this module by looking at an example of creating complex Windows Infrastructure on Google Cloud Platform.
-Typically setting up an environment with highly available SQL Server deployments on-premises would start with a purchase order and take many weeks to complete. On GCP, you'll be able to harness a Cloud Launcher solution.
-With just a few clicks, you'll provision the entire end to end configuration.
-Mission-critical SQL Server workloads require support for high availability and disaster recovery. 
-To achieve this, Google Cloud Platform supports Windows Server Failover Clustering, WSFC.
-SQL Server always on availability groups.
-Always on availability groups is SQL Service flagship high availability disaster recovery solution, allowing me to configure replicas for automatic failover in the case of failure. These replicas can be readable, allowing you to offload read workloads and backups. Compute Engine users can now configure always on availability groups. This includes configuring replicas on virtual machines in different isolated zones, as described in this reference architecture. In this reference architecture, you'll need two custom subnetworks each will hold a SQL Server instance. We also need an Active Directory, as with most typical Windows workloads will promote this domain controller to also be the DNS server. Most SQL Server nodes need to join the Active Directory and update their own DNS settings. When you build the WSFC and availability group using these two nodes. Since we're using static IP addresses, the system will ask you to specify cluster IP and listener IP addresses. We need to configure these using Google Compute Engine's advanced routing, so the packet can be forwarded to the appropriate node. This configuration offers regional high availability. While you could create two subnetworks in the same zone, this won't handle zone level failure. You need two or more custom networks because the system is built on multi-site failover clustering. It also means that SQL clients need to support multi subnet failover for the optimal failure time. When Google have tested this, it can usually complete failover within 15 seconds. When it comes to IP addresses, cloud networking is very different from the on-premises network environments you're used to. At a high level, Google Compute Engine networking is like a big layer 3 switch, DHCP, and similar everyday features work differently from how you might expect based on your on-premise networking experience. Google Compute Engine networking doesn't know about cluster virtual IP addresses, such as the SQL Server availability group listener. It won't automatically assign a new IP address to the VM. As we configured Compute Engine advanced routing, the list that IP address must by definition be outside of any Google Compute Engine network address range. However, from the perspective of Windows running inside the VM, it has to be in the same subnet ranges the primary internal IP for the virtual machine. Here's a typical network configuration that Google recommends for use in this scenario. There are two subnets; 10.1.0.0/24 and 10.2.0.0/24. On the virtual machine's side, the VM network configuration has a subnet mask is 255.255.0.0. The virtual machine view of the network is a superset of the Google Compute Engine subnetwork view. When we pick up the listener IP address, we just need to pick up an address, which is outside of the Compute Engine subnetwork but inside the virtual machines subnet mask. Look at listeners IP address one as an example. This is 10.1.1.5, which is outside of the Google Compute Engine subnet, but it's the same network as the internal IP address, 10.1.0.4 from the virtual machine perspective.
-<br>
+- Let's finish off this module by looking at an example of creating complex Windows Infrastructure on Google Cloud Platform
+    - Typically setting up an environment with highly available SQL Server deployments on-premises would start with a purchase order and take many weeks to complete. On GCP, you'll be able to harness a Cloud Launcher solution
+    - With just a few clicks, you'll provision the entire end to end configuration
+    - Mission-critical SQL Server workloads require support for high availability and disaster recovery
+    - To achieve this, Google Cloud Platform supports Windows Server Failover Clustering, WSFC
 
+- SQL Server always on availability groups
+    - Always on availability groups is SQL Service flagship high availability disaster recovery solution, allowing me to configure replicas for automatic failover in the case of failure
+        - These replicas can be readable, allowing you to offload read workloads and backups
+        - Compute Engine users can now configure always on availability groups
+        - This includes configuring replicas on virtual machines in different isolated zones, as described in this reference architecture
+    - In this reference architecture, you'll need two custom subnetworks each will hold a SQL Server instance
+        - We also need an Active Directory, as with most typical Windows workloads will promote this domain controller to also be the DNS server. Most SQL Server nodes need to join the Active Directory and update their own DNS settings
+        - When you build the WSFC and availability group using these two nodes. Since we're using static IP addresses, the system will ask you to specify cluster IP and listener IP addresses. We need to configure these using Google Compute Engine's advanced routing, so the packet can be forwarded to the appropriate node
+        - This configuration offers regional high availability. While you could create two subnetworks in the same zone, this won't handle zone level failure
+        - You need two or more custom networks because the system is built on multi-site failover clustering - It also means that SQL clients need to support multi subnet failover for the optimal failure time
+    - When Google have tested this, it can usually complete failover within 15 seconds. When it comes to IP addresses, cloud networking is very different from the on-premises network environments you're used to
+        - At a high level, Google Compute Engine networking is like a big layer 3 switch, DHCP, and similar everyday features work differently from how you might expect based on your on-premise networking experience
+        - Google Compute Engine networking doesn't know about cluster virtual IP addresses, such as the SQL Server availability group listener. It won't automatically assign a new IP address to the VM
+        - As we configured Compute Engine advanced routing, the list that IP address must by definition be outside of any Google Compute Engine network address range
+        - However, from the perspective of Windows running inside the VM, it has to be in the same subnet ranges the primary internal IP for the virtual machine
+    - Here's a typical network configuration that Google recommends for use in this scenario
+        - There are two subnets; 10.1.0.0/24 and 10.2.0.0/24. On the virtual machine's side, the VM network configuration has a subnet mask is 255.255.0.0
+        - The virtual machine view of the network is a superset of the Google Compute Engine subnetwork view
+        - When we pick up the listener IP address, we just need to pick up an address, which is outside of the Compute Engine subnetwork but inside the virtual machines subnet mask
+    - Look at listeners IP address one as an example
+        This is 10.1.1.5, which is outside of the Google Compute Engine subnet, but it's the same network as the internal IP address, 10.1.0.4 from the virtual machine perspective
+<br>
 
 ## Hands-on Lab: Create a highly available SQL Server backend using AlwaysOn Availability Groups
 - Launch the Qwiklabs tool for open the Demo
@@ -101,7 +120,6 @@ Always on availability groups is SQL Service flagship high availability disaster
     - Configure the failover cluster manager
     - Create an availability group
     - Test the failover
-
 <br>
 
 [Go to Next Module](./3_Developing_ASP.NET_MVC_applications.md)
