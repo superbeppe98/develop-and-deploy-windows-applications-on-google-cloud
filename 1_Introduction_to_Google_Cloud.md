@@ -127,7 +127,6 @@ need to do their work.
     - Manually create a Windows VM
     - Connect to your Windows VM
     - Disconnect from your Windows VM
-
 <br>
 
 [Go to Next Module](./2_Windows_Workloads_on_Compute_Engine.md)
