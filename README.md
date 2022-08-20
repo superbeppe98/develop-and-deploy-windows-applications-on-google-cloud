@@ -9,13 +9,7 @@
 <br>
 
 ## Course Overview
-- Get to know the basics of Google Cloud and how to create Windows virtual machines
-- You'll learn about the scope and structure of Google Cloud, options for Windows deployment on Google Cloud and Google Cloud interfaces
-
-- Learning Objectives
-    - Understand the services in Google Cloud
-    - Create Windows VMs in Google Cloud
-
+Learn to deploy and run Microsoft Windows® applications on Google Cloud. Through lectures and hands-on labs, learn how to configure and run Microsoft Windows and Microsoft SQL Server in Compute Engine. You will also learn how to develop and deploy ASP.NET applications and deploy them to Compute Engine, App Engine, and Google Kubernetes Engine
 <br>
 
 ## Grading Scheme

@@ -1,18 +1,11 @@
 [Back to Syllabus](/README.md#course-syllabus)
 
 ## Learning Objectives
-
-- Location of IBM Cloud Datacenters
-- Account Type and Support Plans
-- Billing and Usage
-- The Cost Estimator
-- Identity and Access Management
-- IBM Cloud Console
-- IBM Cloud CLI
-- IBM Cloud Shell
+- Understand the services in Google Cloud
+- Create Windows VMs in Google Cloud
 <br>
 
-## High Level Overview
+## What is Google Cloud?
 Hi I'm Eoin Carroll, a Technical
 Curriculum Developer in Google Cloud. What exactly is Google Cloud? How is
 it organized? And what makes it unique? In this module, we'll
@@ -128,23 +121,13 @@ of users to enable them to just have the access levels that they
 need to do their work.
 <br>
 
+## Hands-on Lab: Create a Windows Virtual Machine in Google Compute Engine
+- Launch the Qwiklabs tool for open the Demo
+    - Install Chrome RDP for Google Cloud Platform extension
+    - Manually create a Windows VM
+    - Connect to your Windows VM
+    - Disconnect from your Windows VM
 
-## Hands-on Lab: Using the Catalog and Cloud Shell
-- Navigate to [link](https://cloud.ibm.com) to launch the IBM Cloud
-    - Create a Cloudant database
-    - Launch the IBM Cloud Shell
-    - Use the IBM Cloud CLI
-
-![image](https://user-images.githubusercontent.com/29455975/185613164-57e09cfb-340a-44e5-8c3b-85497d9c89ed.png)
 <br>
 
-## Module Summary
-- IBM Cloud has a catalog of over 200 products and services covering IaaS, PaaS, containers, data and AI, blockchain and more; more than 60 data centers globally; is built on best-in-industry security standards, including GDPR, HIPAA, ISO 9001, PCI, and SOC2
-- In terms of locations and regions, IBM Cloud has data centers in 19 countries and is divided into 6 regions; there is support for both single and multi-zone regions for better resiliency; there are federal regions for government workloads.
-There are three account types on IBM Cloud: Lite, Pay-as-you-go, and Subscription; and there are three support levels on IBM Cloud: Basic, Advanced, and Premium
-- IBM Cloud provides a month-to-month overview of billing and usage; usage and billing can be broken down by service; billing and usage reports can be exported as CSV files
-- IBM Cloud’s Cost Estimator Tool is supported by all IBM Cloud services; is able to convert to multiple currencies, and is able to generate reports as PDF documents
-- An IBM Cloud account can have many users and access groups, which are a collection of users; resources are instances of services from the catalog; roles are assigned on a user or access group and a resource or resource group, coming together to become an access policy
-<br>
-
-[Go to Next Module](./2_Infrastructure.md)
+[Go to Next Module](./2_Windows_Workloads_on_Compute_Engine.md)
