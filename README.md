@@ -1,11 +1,11 @@
 # develop-and-deploy-windows-applications-on-google-cloud
 
 ## Course Syllabus
-- Module 1: [Introduction to IBM Cloud](./1_Introduction_to_IBM_Cloud.md)
-- Module 2: [Infrastructure (Compute, Networking, and Storage)](./2_Infrastructure.md)
-- Module 3: [Deploying Applications](./3_Deploying_Applications.md)
-- Module 4: [Services on IBM Cloud](./4_Services_on_IBM_Cloud.md)
-- Module 5: Final Exam
+- Module 1: [Introduction to Google Cloud](./1_Introduction_to_Google_Cloud.md)
+- Module 2: [Windows Workloads on Compute Engine](./2_Windows_Workloads_on_Compute_Engine.md)
+- Module 3: [Developing ASP.NET MVC applications](./3_Developing_ASP.NET_MVC_applications.md)
+- Module 4: [Configuring Resilient Workloads](./4_Configuring_Resilient_Workloads.md)
+- Module 5: [Delivering Next-Generation ASP.NET Core on Google Cloud](./5_Delivering_Next-Generation_ASP.NET_Core_on_Google_Cloud.md)
 <br>
 
 ## Course Overview
