@@ -60,9 +60,28 @@ There is also a highly available Sequel Server solution which will install multi
     - This is important for Windows Virtual Machines, as they need to be able to connect to the internet to contact the Windows license server when the machine is first provisioned and subsequently at regular intervals
     - So you'll need to ensure that your network configuration supports this. It's also important to remember that there are two firewalls in play with Windows Virtual Machines, both the one running on your Windows server and Compute Engines firewall
     - The Compute Engine default firewall allows RDP traffic and iCMP so you can pin your instance. SSH is also important, but not so important for Windows VMs. You probably want to lock down RDP axis
-    - So it's only possible from your own premises environment, and if you've got a VPN connection, remove the default RDP rule altogether. You'll also need to think about what other ports should be opened.
+    - So it's only possible from your own premises environment, and if you've got a VPN connection, remove the default RDP rule altogether. You'll also need to think about what other ports should be opened
     
-- One final network feature is that VMs can be configured with a fixed internal IP address. Doing this means that the address is preserved even when the machine is shut down for an extended period of time then restarted. Without a fixed internal address, the address is assigned by Google's DHCP service. Let's look at Compute Engine storage configuration. The default storage configuration for Windows Virtual Machines is a single 50 gigabyte persistent disk based on spinning hard drives. Persistent Disks on Compute Engine, our network attached block storage devices where performance scales with the size of the disks and are automatically replicated three times. They come in two types, Regular and SSD. SSD drives offer higher throughput and much higher IOPS performance than regular hard drives at a higher per gigabyte cost. Take a look at the docs for absolute performance numbers. You can have a maximum of 64 terabytes of storage per Virtual Machine and you can split this up over multiple distinct discs of different types. One nice feature of Compute Engine disks is that they can be attached to multiple machines in read only mode. In addition, you can also provision local SSDs. This has even higher IOPS performance than a persistent SSD but does not survive a Virtual Machine shutdown. You should use this as a local scratch disk or cash drive where the application needs that. Disks can also be backed up using Compute Engine snapshots. These integrate with the Windows volume Shadow copy service, which means that there's usually no need to pause disk activity to back up to disk and Compute Engine. Another product on Google Cloud that you should be aware of is Google Cloud's operations. Sweet. This provides single pane of glass monitoring, logging, tracing and arrow reporting across all your Compute Engine Virtual Machines. There is an available cloud monitoring agent for Windows to enable collection of key metrics from your Windows Virtual Machines.
+- One final network feature is that VMs can be configured with a fixed internal IP address
+    - Doing this means that the address is preserved even when the machine is shut down for an extended period of time then restarted
+    - Without a fixed internal address, the address is assigned by Google's DHCP service
+
+- Let's look at Compute Engine storage configuration
+    - The default storage configuration for Windows Virtual Machines is a single 50 gigabyte persistent disk based on spinning hard drives
+    - Persistent Disks on Compute Engine, our network attached block storage devices where performance scales with the size of the disks and are automatically replicated three times
+    - They come in two types, Regular and SSD
+    - SSD drives offer higher throughput and much higher IOPS performance than regular hard drives at a higher per gigabyte cost
+    - You can have a maximum of 64 terabytes of storage per Virtual Machine and you can split this up over multiple distinct discs of different types 
+
+- One nice feature of Compute Engine disks is that they can be attached to multiple machines in read only mode
+    - In addition, you can also provision local SSDs
+    - This has even higher IOPS performance than a persistent SSD but does not survive a Virtual Machine shutdown
+    - You should use this as a local scratch disk or cash drive where the application needs that
+    - Disks can also be backed up using Compute Engine snapshots. These integrate with the Windows volume Shadow copy service, which means that there's usually no need to pause disk activity to back up to disk and Compute Engine
+    
+- Another product on Google Cloud that you should be aware of is Google Cloud's operations
+    - This provides single pane of glass monitoring, logging, tracing and arrow reporting across all your Compute Engine Virtual Machines
+    - There is an available cloud monitoring agent for Windows to enable collection of key metrics from your Windows Virtual Machines
 <br>
 
 ## High-Availability SQL Server on Compute Engine
